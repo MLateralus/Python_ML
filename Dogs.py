@@ -32,7 +32,6 @@ class KNN():
                 best_index = i
         return self.y_train[best_index]
 
-
 iris = datasets.load_iris()
 
 X = iris.data
