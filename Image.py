@@ -37,14 +37,14 @@ class Image:
         for i in range(0, self.interpol_num):
             interpol = self.interpolations[i]
             plt.subplot(2, 3, i + 2)
-            plt.imshow(self.image[90:250, 80:260], interpolation=interpol)
+            plt.imshow(self.image, interpolation=interpol)
             plt.ylabel(self.interpolations[i])
             self.__log__(i, interpol)
 
     def nl_means(self):
         self.__log__("Denoising nl means.....")
         plt.subplot(2, 3, 5)
-        denoise = denoise_nl_means(self.image[90:250, 80:260], 7, 9, 0.1, multichannel=True)
+        denoise = denoise_nl_means(self.image, 7, 9, 0.1, multichannel=True)
         plt.imshow(denoise)
         plt.ylabel("Non_local means")
         self.__log__("Denoising nl means done")
@@ -52,7 +52,7 @@ class Image:
     def total_variations(self):
         self.__log__("Denoising total variations.....")
         plt.subplot(2, 3, 6)
-        tv_denoised = denoise_tv_chambolle(self.image[90:250, 80:260], weight=0.1, multichannel=True)
+        tv_denoised = denoise_tv_chambolle(self.image, weight=0.1, multichannel=True)
         plt.imshow(tv_denoised)
         plt.ylabel("Total Variation denoise")
         self.__log__("Denoising total variations done")
@@ -63,6 +63,6 @@ class Image:
 
 if __name__ == '__main__':
 
-    newImage = Image("C:/Users/Lateralus/Pictures/Peny.png", ['nearest', 'bilinear', 'quadric'], 4)
+    newImage = Image("C:/lena_recon_3.jpg", ['nearest', 'bilinear', 'quadric'], 4)
     newImage.draw()
 

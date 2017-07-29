@@ -1,0 +1,1 @@
+Game created with huge help of Kamil Pastwa: https://github.com/Pastew, For any further copying or distribution must notify both authors.
