@@ -1,18 +1,15 @@
 import speech_recognition as sr
-from gtts import gTTS
-import os
-import time
 
 
-class STT:
-    def __init__(self, user_name):
+class x_STT:
+
+    def __init__(self):
         self.r = sr.Recognizer()
-        self.user_name = user_name
-        self.say_hello(user_name)
-
+        self.WIT_AI_KEY = ''
         with open('credentials/WIT.txt') as f:
             self.WIT_AI_KEY = f.readline()
             f.close()
+        assert (self.WIT_AI_KEY != ''), "WIT KEY not available"
 
         # Debug the config
         print("[DEBUG] Using WIT key: %s" % self.WIT_AI_KEY)
@@ -32,17 +29,3 @@ class STT:
             print("Wit.ai could not understand audio")
         except sr.RequestError as e:
             print("Could not request results from Wit.ai service; {0}".format(e))
-
-    # Redesign this to autoclose the audio file on windows !
-    def say_hello(self, user_name):
-        tts = gTTS('Cześć' + user_name, lang='pl')
-        tts.save("hello.mp3")
-        os.system("hello.mp3")
-        time.sleep(2) # Ughh..
-
-if __name__ == "__main__":
-
-    # Create a new Instance for user
-    stt_x = STT("Majeczka")
-
-    # recog_text = stt_x.listen()
