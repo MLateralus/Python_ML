@@ -25,8 +25,10 @@ class Actions:
         print("weather_com_result: %s " % weather_com_result)
         print("Weather.com says: It is " + (weather_com_result['current_conditions']['text']) + " and " +
             weather_com_result['current_conditions']['temperature'] + "C Strbske Pleso, Slovakia.\n\n")
-
-
+        for i in weather_com_result['forecasts']:
+            # print(weather_com_result['forecasts'])
+            pass
+        
 if __name__ == "__main__":
 
     # Create a new Instance for user
